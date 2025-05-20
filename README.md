@@ -2,7 +2,7 @@
 
 ### 一、專案概述
 
-1. **專案名稱**：WalletService
+1. **專案名稱**：Clear Ledger
 2. **專案目標**：提供一套可重複使用的錢包功能模組，支援加錢、扣錢、手續費、利息／獎勵發放、明細與報表產製，方便整合至多種業務系統。
 3. **核心價值**：
 
@@ -136,8 +136,8 @@
 
    ```bash
    # Clone the repository
-   git clone https://github.com/githubnext/workspace-blank.git
-   cd workspace-blank
+   git clone https://github.com/ChenHom/clear-ledger.git
+   cd clear-ledger
 
    # Install dependencies
    npm install

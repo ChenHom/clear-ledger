@@ -3,83 +3,83 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, CreateDat
 @Entity('wallets')
 export class Wallet {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column({ comment: '用戶ID' })
-  userId: string;
+  userId!: string;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0, comment: '餘額' })
-  balance: number;
+  balance!: number;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0, comment: '凍結餘額' })
-  frozenBalance: number;
+  frozenBalance!: number;
 
   @OneToMany(() => Transaction, (transaction) => transaction.wallet)
-  transactions: Transaction[];
+  transactions!: Transaction[];
 }
 
 @Entity('transactions')
 export class Transaction {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @ManyToOne(() => Wallet, (wallet) => wallet.transactions)
-  wallet: Wallet;
+  wallet!: Wallet;
 
   @Column({ comment: '用戶ID' })
-  userId: string;
+  userId!: string;
 
   @Column('decimal', { precision: 10, scale: 2, comment: '交易金額' })
-  amount: number;
+  amount!: number;
 
   @Column('decimal', { precision: 10, scale: 2, comment: '交易前餘額' })
-  balanceBefore: number;
+  balanceBefore!: number;
 
   @Column('decimal', { precision: 10, scale: 2, comment: '交易後餘額' })
-  balanceAfter: number;
+  balanceAfter!: number;
 
   @Column({ comment: '交易類型' })
-  type: string;
+  type!: string;
 
   @Column('json', { nullable: true, comment: '附加數據' })
   metadata: any;
 
   @Column({ comment: '交易狀態' })
-  status: string;
+  status!: string;
 
   @CreateDateColumn({ comment: '創建時間' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @OneToMany(() => TransactionDetail, (transactionDetail) => transactionDetail.transaction)
-  transactionDetails: TransactionDetail[];
+  transactionDetails!: TransactionDetail[];
 }
 
 @Entity('transaction_details')
 export class TransactionDetail {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @ManyToOne(() => Transaction, (transaction) => transaction.transactionDetails)
-  transaction: Transaction;
+  transaction!: Transaction;
 
   @Column({ comment: '用戶ID' })
-  userId: string;
+  userId!: string;
 
   @Column('decimal', { precision: 10, scale: 2, comment: '交易金額' })
-  amount: number;
+  amount!: number;
 
   @Column('decimal', { precision: 10, scale: 2, comment: '交易前餘額' })
-  balanceBefore: number;
+  balanceBefore!: number;
 
   @Column('decimal', { precision: 10, scale: 2, comment: '交易後餘額' })
-  balanceAfter: number;
+  balanceAfter!: number;
 
   @Column({ comment: '交易類型' })
-  type: string;
+  type!: string;
 
   @Column('json', { nullable: true, comment: '附加數據' })
   metadata: any;
 
   @CreateDateColumn({ comment: '創建時間' })
-  createdAt: Date;
+  createdAt!: Date;
 }
